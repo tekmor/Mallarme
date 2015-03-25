@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <PreferenceCategory
+        android:summary="Les options du serveur"
+        android:title="Options du serveur">
+
+        <EditTextPreference
+            android:inputType="textNoSuggestions"
+            android:key="serveur"
+            android:lines="1"
+            android:summary="Adresse IP du serveur OSC"
+            android:title="Serveur" />
+
+        <EditTextPreference
+            android:inputType="number"
+            android:key="port"
+            android:lines="1"
+            android:summary="Port du serveur OSC"
+            android:title="Port" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:summary="Différentes options d'affichage"
+        android:title="Options d'affichage">
+
+        <CheckBoxPreference
+            android:checked="false"
+            android:key="checkBox"
+            android:onClick="itemClicked"
+            android:summary="Permet d&apos;afficher la grille"
+            android:title="Afficher la grille" />
+
+        <ListPreference
+            android:entries="@array/listOptions"
+            android:entryValues="@array/listValues"
+            android:key="listpref"
+            android:summary="Une liste d'options"
+            android:title="Liste d'options" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
