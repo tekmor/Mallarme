@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:defaultValue="0"
+        android:inputType="number"
+        android:key="port"
+        android:lines="1"
+        android:summary="Port du serveur OSC"
+        android:title="Port" />
+</PreferenceScreen>

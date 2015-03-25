@@ -15,6 +15,7 @@
             android:title="Serveur" />
 
         <EditTextPreference
+            android:defaultValue="true"
             android:inputType="number"
             android:key="port"
             android:lines="1"

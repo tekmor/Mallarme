@@ -33,8 +33,8 @@ public class MainActivity extends Activity implements OnTouchListener {
     ImageButton blueCircle, pinkCircle;
     RelativeLayout rl;
 
-    String addrServ = "172.16.100.245";
-    Integer portServ = 12345;
+    String addrServ = "172.16.101.15";
+    Integer portServ = 2727;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,9 +50,11 @@ public class MainActivity extends Activity implements OnTouchListener {
         rl = (RelativeLayout) findViewById(R.id.RelativeLayout1);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        PreferenceManager.setDefaultValues(this, R.xml.preference, false);
 
-        //addrServ = prefs.getString("serveur", "NULL");
-        //portServ = prefs.getInt("port", 0);
+        addrServ = prefs.getString("serveur", "NULL");
+        portServ = Integer.parseInt(prefs.getString("port", ""));
+
         boolean checkBox = prefs.getBoolean("checkBox", false);
 
         if (checkBox == true) {
