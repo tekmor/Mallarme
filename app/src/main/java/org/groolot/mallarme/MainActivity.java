@@ -34,7 +34,7 @@ public class MainActivity extends Activity implements OnTouchListener {
     RelativeLayout rl;
 
     String addrServ = "172.16.101.15";
-    Integer portServ = 2727;
+    Integer portServ = 12345;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class MainActivity extends Activity implements OnTouchListener {
         PreferenceManager.setDefaultValues(this, R.xml.preference, false);
 
         addrServ = prefs.getString("serveur", "NULL");
-        portServ = Integer.parseInt(prefs.getString("port", ""));
+        //portServ = Integer.parseInt(prefs.getString("port", "12345"));
 
         boolean checkBox = prefs.getBoolean("checkBox", false);
 

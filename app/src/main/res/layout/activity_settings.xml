@@ -16,7 +16,7 @@
 
         <EditTextPreference
             android:defaultValue="true"
-            android:inputType="number"
+            android:inputType="numberSigned"
             android:key="port"
             android:lines="1"
             android:summary="Port du serveur OSC"
