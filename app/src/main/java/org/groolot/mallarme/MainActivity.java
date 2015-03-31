@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.illposed.osc.OSCMessage;
 import com.illposed.osc.OSCPortOut;
@@ -28,13 +30,14 @@ import java.util.Vector;
 
 public class MainActivity extends Activity implements OnTouchListener {
 
+    final String constAddrServ = "0.0.0.0";
+    final Integer constPortServ = 0;
     TextView textView;
     ImageView imgView;
     ImageButton blueCircle, pinkCircle;
     RelativeLayout rl;
-
-    String addrServ = "172.16.101.15";
-    Integer portServ = 12345;
+    String addrServ;
+    Integer portServ;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,9 +55,27 @@ public class MainActivity extends Activity implements OnTouchListener {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         PreferenceManager.setDefaultValues(this, R.xml.preference, false);
 
-        addrServ = prefs.getString("serveur", "NULL");
-        //portServ = Integer.parseInt(prefs.getString("port", "12345"));
+        if (prefs.getString("serveur", "NULL") != "") {
+            addrServ = prefs.getString("serveur", "NULL");
+        } else {
+            addrServ = constAddrServ;
+        }
+        if (!addrServ.matches("\\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\b")) {
+            startActivity(new Intent(this, SettingsActivity.class));
+            Toast.makeText(this, "Adresse IP incorrecte !", Toast.LENGTH_SHORT).show();
+        }
+        try {
+            portServ = Integer.parseInt(prefs.getString("port", ""));
+        } catch (Exception e) {
+            portServ = constPortServ;
+        }
+        if (portServ <= 0 || portServ >= 65536) {
+            startActivity(new Intent(this, SettingsActivity.class));
+            Toast.makeText(this, "Port incorrect !", Toast.LENGTH_SHORT).show();
+        }
 
+        Log.i("SETTINGS", "Port : " + portServ.toString());
+        Log.i("SETTINGS", "Addr : " + addrServ);
         boolean checkBox = prefs.getBoolean("checkBox", false);
 
         if (checkBox == true) {

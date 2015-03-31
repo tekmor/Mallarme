@@ -8,7 +8,8 @@
         android:title="Options du serveur">
 
         <EditTextPreference
-            android:inputType="textNoSuggestions"
+            android:digits="0123456789."
+            android:inputType="number"
             android:key="serveur"
             android:lines="1"
             android:summary="Adresse IP du serveur OSC"
@@ -16,7 +17,7 @@
 
         <EditTextPreference
             android:defaultValue="true"
-            android:inputType="numberSigned"
+            android:inputType="number"
             android:key="port"
             android:lines="1"
             android:summary="Port du serveur OSC"
