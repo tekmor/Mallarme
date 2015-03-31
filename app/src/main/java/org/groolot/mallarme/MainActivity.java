@@ -1,8 +1,11 @@
 package org.groolot.mallarme;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -44,6 +47,10 @@ public class MainActivity extends Activity implements OnTouchListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (getConnectedStatus(this) == false) {
+            Toast.makeText(this, "Activez votre connexion internet", Toast.LENGTH_SHORT).show();
+        }
+
         blueCircle = (ImageButton) findViewById(R.id.blueCircle);
         blueCircle.setOnTouchListener(this);
 
@@ -82,6 +89,16 @@ public class MainActivity extends Activity implements OnTouchListener {
             rl.setBackgroundResource(R.drawable.grille);
         } else {
             rl.setBackgroundResource(0);
+        }
+    }
+
+    private boolean getConnectedStatus(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (null == activeNetwork) {
+            return false;
+        } else {
+            return true;
         }
     }
 
