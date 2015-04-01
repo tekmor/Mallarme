@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:groolot="http://robobunny.com"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -35,12 +36,25 @@
             android:summary="Permet d&apos;afficher la grille"
             android:title="Afficher la grille" />
 
-        <ListPreference
-            android:entries="@array/listOptions"
-            android:entryValues="@array/listValues"
-            android:key="listpref"
-            android:summary="Une liste d'options"
-            android:title="Liste d'options" />
+        <!--<ListPreference-->
+        <!--android:entries="@array/listOptions"-->
+        <!--android:entryValues="@array/listValues"-->
+        <!--android:key="listpref"-->
+        <!--android:summary="Une liste d'options"-->
+        <!--android:title="Liste d'options" />-->
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:summary="Différentes options d'affichage"
+        android:title="Options d'affichage">
+
+        <org.groolot.mallarme.SeekBarPreference
+            android:defaultValue="0"
+            android:key="speechRate"
+            android:max="100"
+            android:summary="Adjust reading speed"
+            android:title="Speech speed"
+            groolot:min="0" />
+
+    </PreferenceCategory>
 </PreferenceScreen>

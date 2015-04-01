@@ -51,10 +51,10 @@ public class MainActivity extends Activity implements OnTouchListener {
             Toast.makeText(this, "Activez votre connexion internet", Toast.LENGTH_SHORT).show();
         }
 
-        blueCircle = (ImageButton) findViewById(R.id.blueCircle);
+        blueCircle = (ImageButton) findViewById(R.id.annabelle);
         blueCircle.setOnTouchListener(this);
 
-        pinkCircle = (ImageButton) findViewById(R.id.pinkCircle);
+        pinkCircle = (ImageButton) findViewById(R.id.florence);
         pinkCircle.setOnTouchListener(this);
 
         rl = (RelativeLayout) findViewById(R.id.RelativeLayout1);
@@ -169,7 +169,7 @@ public class MainActivity extends Activity implements OnTouchListener {
         send.add(X);
         send.add(Y);
 
-        OSCMessage msg = new OSCMessage("/mallarme/masque/" + v.getResources().getResourceEntryName(v.getId()), send);
+        OSCMessage msg = new OSCMessage("/mallarme/" + v.getResources().getResourceEntryName(v.getId()) + "/position", send);
         OSCSend(addrServ, portServ, msg);
 
         return false;

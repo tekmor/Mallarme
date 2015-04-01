@@ -25,7 +25,7 @@
         -->
 
     <ImageButton
-        android:id="@+id/blueCircle"
+        android:id="@+id/annabelle"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignParentLeft="true"
@@ -33,7 +33,7 @@
         android:background="@drawable/blue_circle" />
 
     <ImageButton
-        android:id="@+id/pinkCircle"
+        android:id="@+id/florence"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignParentRight="true"
